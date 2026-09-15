@@ -1,0 +1,235 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #050608;
+  --color-primary-bg: #080b10;
+  --color-card: #0c1118;
+  --color-secondary-card: #10161f;
+  --color-primary: #f5f7fa;
+  --color-secondary: #9aa4b2;
+  --color-muted: #667080;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-accent: #6ee7ff;
+  --color-secondary-accent: #8b7cff;
+  --color-positive: #42e6a4;
+  --color-negative: #ff667a;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), var(--font-inter), ui-sans-serif, system-ui,
+    sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-primary);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(110, 231, 255, 0.25);
+  color: #f5f7fa;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display);
+}
+
+@keyframes pulse-subtle {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-pulse-subtle {
+  animation: pulse-subtle 2s ease-in-out infinite;
+}
+
+/* Documentation prose */
+.docs-prose {
+  color: var(--color-secondary);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+.docs-prose > p {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+}
+
+.docs-prose > p:first-child {
+  margin-top: 0;
+}
+
+.docs-prose .docs-lead {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  color: var(--color-secondary);
+}
+
+.docs-prose ul,
+.docs-prose ol {
+  margin-top: 1.25em;
+  margin-bottom: 1.25em;
+  padding-left: 1.5em;
+}
+
+.docs-prose ul {
+  list-style-type: disc;
+}
+
+.docs-prose ol {
+  list-style-type: decimal;
+}
+
+.docs-prose li {
+  margin-top: 0.5em;
+}
+
+.docs-prose li::marker {
+  color: var(--color-muted);
+}
+
+.docs-prose strong {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.docs-prose code {
+  font-family: ui-monospace, monospace;
+  font-size: 0.875em;
+  border-radius: 0.25rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-card);
+  padding: 0.125rem 0.375rem;
+  color: var(--color-primary);
+}
+
+.docs-prose a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.docs-prose a:hover {
+  opacity: 0.85;
+}
+
+.docs-h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.docs-h3 {
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.docs-h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.docs-prose hr {
+  margin: 2rem 0;
+  border: none;
+  border-top: 1px solid var(--color-border);
+}
+
+/* Docs layout */
+.docs-sidebar {
+  border-right: 1px solid var(--color-border);
+  background: linear-gradient(180deg, rgba(8, 11, 16, 0.95) 0%, rgba(5, 6, 8, 1) 100%);
+}
+
+.docs-main {
+  background:
+    radial-gradient(ellipse at top right, rgba(110, 231, 255, 0.04) 0%, transparent 45%),
+    var(--color-background);
+}
+
+.docs-main-inner {
+  min-height: calc(100vh - 3.5rem);
+}
+
+.docs-hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.docs-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.35), transparent);
+  pointer-events: none;
+}
+
+/* Subtle custom scrollbars for docs panels */
+.docs-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.14) transparent;
+}
+
+.docs-scrollbar::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+.docs-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.docs-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+}
+
+.docs-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
